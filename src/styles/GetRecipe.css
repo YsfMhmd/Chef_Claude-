@@ -1,0 +1,40 @@
+section.get-recipe {
+    background-color: red;
+    padding: 28px 3rem;
+    background-color: #f0efeb;
+    border-radius: 8px;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+section.get-recipe .text h2 {
+    color: #141413;
+    font-weight: 500;
+    line-height: 24px;
+    font-size: 18px;
+}
+section.get-recipe .text p {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color:#6B7280;
+}
+section.get-recipe button{
+    padding: 9px 17px;
+    background-color: #D17557;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #FAFAF8;
+    border:none;
+    transition: 0.4s;
+}
+
+section.get-recipe button:hover{
+    color:#D17557;
+    background-color: #dcdcdc;
+}

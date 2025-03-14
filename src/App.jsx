@@ -5,39 +5,35 @@ import GetRecipe from "./components/GetRecipe.jsx"
 import IngredientsList from './components/IngredientsList.jsx';
 import Recipe from "./components/Recipe.jsx"
 import React from "react"
-
-const recipeFetched = "this is the recipe needed!"
+import fetchRecipe from './ai.js';
 function App() {
 
     const [ingredients,setIngredients]=React.useState([]);
     const [recipe,setRecipe] =React.useState("")
-    const [time,setTime] =React.useState(false)
     function addIngredient(formData){
         const ing = formData.get("ingredient")
         if(ing.trim()){
           setIngredients((prevIngredients)=>[...prevIngredients,ing])
         }
     }
-    function getRecipe(){
-      setRecipe(recipeFetched)
-    }
+    async function getRecipe(){
+      console.log("started")
+      setRecipe(await fetchRecipe(ingredients))
+      console.log("ended")
+    } 
     function newRecipe(){
       setIngredients([]);
       setRecipe("")
     }
-    function timer(){
-      console.log("hello")
-      setTimeout(()=>{setTime(true)},2000)
-    }
   return (
     <>
-    <Header onClick={timer}/>
+    <Header/>
     <main className="container">
-      {time?<Form addIngredient={addIngredient}/>:undefined}
+      <Form addIngredient={addIngredient}/>
       {ingredients.length ?<IngredientsList ingredients={ingredients}/>:undefined}
       {ingredients.length > 2 ?<GetRecipe onClick={getRecipe}/>:undefined}
-      {recipe ?<Recipe recipe={recipeFetched}/>:undefined}
-      {recipe ?<button onClick={newRecipe}>Get new recipe?</button>:undefined}
+      {recipe ?<Recipe recipe={recipe}/>:undefined}
+      {recipe ?<button className="new-recipe-button"onClick={newRecipe}>Get new recipe?</button>:undefined}
     </main>
     </>
   )
